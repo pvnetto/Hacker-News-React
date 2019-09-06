@@ -1,0 +1,17 @@
+1) Escolher paleta de cores 	DONE
+	- https://colorhunt.co/palette/149559
+2) Escolher fontes		DONE
+	- HEADERS: Raleway
+	- SUB-HEADERS: Roboto OU Roboto Slab
+3) Fazer layout			DONE
+
+
+
+OBJETIVOS:
+- 1) Aplicação simples com React
+- 2) Usar Fetch API para popular componentes React
+- 3) Loading screen na busca
+- 4) (opcional) Autenticação
+	- Avaliar quais seriam as vantagens de ter autenticação
+		- Histórico de buscas
+		- Página inicial poderia ter pequena seção com notícias relacionadas às últimas buscas (recomendados, seria basicamente uma busca extra)
