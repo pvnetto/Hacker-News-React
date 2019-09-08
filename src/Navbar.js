@@ -4,7 +4,8 @@ import { faHireAHelper } from '@fortawesome/free-brands-svg-icons';
 import { faCogs } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
     return (
         <nav className="row navbar navbar-light bg-secondary py-3">
             <ul className="col-12 w-100 navbar-nav flex-row justify-content-between align-items-center">
@@ -16,7 +17,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item w-100 mx-4">
                     <form action="">
-                        <input className="w-100 p-2" type="text" placeholder="Search anything you want in hacker news" />
+                        <input onChange={(e) => props.onTypeSearch(e.target.value)} className="w-100 p-2" type="text" placeholder="Search anything you want in hacker news" />
                     </form>
                 </li>
                 <li className="nav-item px-3">

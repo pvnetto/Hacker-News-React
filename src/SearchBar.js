@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBarOption from './SearchBarOption';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
     const onSelectOption = (val) => {
         console.log("Selected " + val);
@@ -19,9 +19,12 @@ const SearchBar = () => {
                     <SearchBarOption selectItems={['All time', 'Last 24h', 'Past Week', 'Past Month', 'Past Year', 'Custom Range']} onSelect={onSelectOption} />
                 </div>
 
-                <div>
-                    <p>99.999 results (0.002 seconds).</p>
-                </div>
+                {
+                    props.totalHits !== undefined &&
+                    (<div>
+                        <p>{props.totalHits} results ({props.processingTime / 1000} seconds)</p>
+                    </div>)
+                }
             </div>
         </div>
     );

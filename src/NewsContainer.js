@@ -6,7 +6,7 @@ const NewsContainer = (props) => {
         <div className="row py-3 bg-light">
 
             <div className="col-12">
-                {props.results && props.results.map(result => <NewsItem key={result.id} {...result} />)}
+                {props.results && props.results.map(result => result.title ? <NewsItem key={result.objectID} {...result} /> : null)}
 
                 <ul className="pagination align-items-center justify-content-center">
                     <li className="page-item">

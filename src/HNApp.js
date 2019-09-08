@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
 import NewsContainer from './NewsContainer';
@@ -6,96 +6,33 @@ import Footer from './Footer';
 
 import './scss/main.scss';
 
+import { fetchStories } from './AlgoliaFetch';
+
 function HNApp() {
 
-  const results = [
-    {
-      id: 0,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 1,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 2,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 3,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 4,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 5,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 6,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-    {
-      id: 7,
-      link: 'google.com',
-      title: 'News title',
-      points: 0,
-      user: 'pvnetto',
-      date: '3 days ago',
-      commentCount: 99,
-      source: 'google.com'
-    },
-  ]
+  let [currentPage, setCurrentPage] = useState(0);
+  let [searchTerm, setSearchTerm] = useState("");
+  let [searchResults, setSearchResults] = useState([]);
+  let [searchPerformanceData, setSearchPerformanceData] = useState({ totalHits: undefined, processingTime: undefined });
+
+  useEffect(() => {
+    console.log("Component did mount");
+
+    fetchStories(searchTerm, currentPage).then(data => {
+      console.log(data);
+      setSearchResults(data.hits);
+      setSearchPerformanceData({
+        totalHits: data.nbHits,
+        processingTime: data.processingTimeMS
+      });
+    });
+  }, [searchTerm, currentPage]);
 
   return (
     <div className="container">
-      <Navbar />
-      <SearchBar />
-      <NewsContainer results={results} />
+      <Navbar onTypeSearch={setSearchTerm} />
+      <SearchBar {...searchPerformanceData} />
+      <NewsContainer results={searchResults} onChangePage={setCurrentPage} />
       <Footer />
     </div>
   );
