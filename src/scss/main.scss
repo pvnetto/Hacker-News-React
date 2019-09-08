@@ -1,0 +1,42 @@
+@import '_custom';
+@import '_config';
+@import '_reset';
+
+hr {
+    border-top-color: rgba(white, 0.2);
+}
+
+.text-sm {
+    font-size: 0.8rem;
+}
+
+a:hover {
+    @include easeOut(0.2s);
+    color: rgba(white, 0.8);
+}
+
+.navbar-brand {
+    svg {
+        font-size: 2.5rem;
+    }
+}
+
+.navbar-light .navbar-brand:hover {
+    color: white;
+    animation: shake-logo 0.5s;
+}
+
+@keyframes shake-logo {
+    0% {
+        transform: rotateZ(0deg);
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: rotateZ(15deg);
+    }
+
+    100% {
+        transform: rotateZ(-15deg);
+    }
+}

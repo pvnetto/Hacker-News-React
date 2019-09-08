@@ -8,8 +8,8 @@ const SearchBar = () => {
     }
 
     return (
-        <div className="py-3 row">
-            <div className="col-12 d-flex flex-md-row flex-column justify-content-between">
+        <div className="row py-3 bg-dark">
+            <div className="col-12 d-flex flex-md-row flex-column justify-content-between align-items-center">
                 <div>
                     Search
                     <SearchBarOption selectItems={['All', 'Stories', 'Comments']} onSelect={onSelectOption} />

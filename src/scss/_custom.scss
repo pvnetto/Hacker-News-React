@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+// Override default variables before the import
+$primary: #313131;
+$secondary: #CA3E47;
+$dark: #414141;
+$light: #525252;
+
+$font-family-sans-serif: "Raleway", sans-serif !default;
+$font-family-base: 'Roboto', sans-serif !default;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';

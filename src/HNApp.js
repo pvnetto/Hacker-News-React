@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import NewsContainer from './NewsContainer';
 import Footer from './Footer';
 
-import './bootstrap.min.css';
+import './scss/main.scss';
 
 function HNApp() {
 
