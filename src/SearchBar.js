@@ -3,10 +3,6 @@ import SearchBarOption from './SearchBarOption';
 
 const SearchBar = (props) => {
 
-    const onSelectOption = (val) => {
-        console.log("Selected " + val);
-    }
-
     return (
         <div className="row py-3 bg-dark">
             <div className="col-12 d-flex flex-lg-row flex-column justify-content-lg-between justify-content-start align-items-lg-center align-items-start">

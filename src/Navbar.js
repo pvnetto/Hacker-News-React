@@ -1,10 +1,13 @@
 import React from 'react';
 
 import { faHireAHelper } from '@fortawesome/free-brands-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuth0 } from "./react-auth0-wrapper";
+import LoginBtn from './LoginBtn';
+import UserProfile from './UserProfile';
 
 const Navbar = (props) => {
+    const { isAuthenticated } = useAuth0();
 
     return (
         <nav className="row navbar navbar-light bg-secondary py-3">
@@ -20,11 +23,12 @@ const Navbar = (props) => {
                         <input onChange={(e) => props.onTypeSearch(e.target.value)} className="w-100 p-2" type="text" placeholder="Search anything you want in hacker news" />
                     </form>
                 </li>
-                <li className="nav-item pl-3">
-                    <button className="btn btn-dark py-2 px-3">
-                        <FontAwesomeIcon icon={faUser} />
-                    </button>
-                </li>
+
+                {
+                    isAuthenticated ?
+                        <UserProfile /> :
+                        <LoginBtn />
+                }
             </ul>
         </nav>
     );

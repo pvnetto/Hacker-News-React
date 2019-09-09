@@ -23,7 +23,7 @@ const CommentItem = (props) => {
                 <h4>{props.story_title}</h4>
             </div>
             <div>
-                <p>{props.comment_text}</p>
+                <p className="text-break">{props.comment_text}</p>
             </div>
             <div>
                 <p className="text-sm pt-2">{props.points} points | {props.author} | {getNewsTimestamp()}</p>
