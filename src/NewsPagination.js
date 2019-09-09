@@ -21,6 +21,13 @@ const NewsPagination = (props) => {
         switch (action) {
             case 'LOCK': {
                 start = props.currentPage + 1 - halfCycle;
+
+                // Handles the case where the page range would start in an index bigger than the
+                // start of the page cycle, the start is reset to the start of the last cycle (maxPages - cycle_size)
+                if (start > PAGES_PER_CYCLE && start + PAGES_PER_CYCLE - 1 > props.maxPages) {
+                    start = props.maxPages - PAGES_PER_CYCLE + 1;
+                }
+
                 end = start < 0 ? PAGES_PER_CYCLE : start + PAGES_PER_CYCLE - 1;
                 break;
             }
