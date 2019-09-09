@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewsItem = (props) => {
+const CommentItem = (props) => {
 
     const getNewsTimestamp = () => {
         let secondsNow = Math.floor(Date.now() / 1000);         // Time is converted to UNIX timestamp
@@ -20,14 +20,17 @@ const NewsItem = (props) => {
     return (
         <div>
             <div>
-                <h4><a href={props.url}>{props.title}</a></h4>
+                <h4>{props.story_title}</h4>
             </div>
             <div>
-                <p className="text-sm pt-2 text-break">{props.points} points | {props.author} | {getNewsTimestamp()} | {props.num_comments} comments | ({props.url})</p>
+                <p>{props.comment_text}</p>
+            </div>
+            <div>
+                <p className="text-sm pt-2">{props.points} points | {props.author} | {getNewsTimestamp()}</p>
             </div>
             <hr />
         </div>
     );
 };
 
-export default NewsItem;
+export default CommentItem;

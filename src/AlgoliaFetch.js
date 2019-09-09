@@ -15,6 +15,7 @@ const searchTypes = {
 };
 
 const searchTags = {
+    ALL: 'All',
     STORIES: 'Stories',
     COMMENTS: 'Comments'
 };
@@ -51,7 +52,7 @@ const getSearchTag = (searchTag) => {
         case searchTags.COMMENTS:
             return 'comment';
         default:
-            return 'story';
+            return '';
     }
 }
 

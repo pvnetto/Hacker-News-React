@@ -9,19 +9,21 @@ const SearchBar = (props) => {
 
     return (
         <div className="row py-3 bg-dark">
-            <div className="col-12 d-flex flex-md-row flex-column justify-content-between align-items-center">
+            <div className="col-12 d-flex flex-lg-row flex-column justify-content-lg-between justify-content-start align-items-lg-center align-items-start">
                 <div>
                     Search
                     <SearchBarOption selectItems={props.searchTags} onSelect={props.setTag} />
                     by
                     <SearchBarOption selectItems={props.searchTypes} onSelect={props.setType} />
-                    for
-                    <SearchBarOption selectItems={props.searchIntervals} onSelect={props.setInterval} />
+                    <span className="d-md-inline d-block">
+                        for
+                        <SearchBarOption selectItems={props.searchIntervals} onSelect={props.setInterval} />
+                    </span>
                 </div>
 
                 {
                     props.totalHits !== undefined &&
-                    (<div>
+                    (<div className="pt-lg-0 pt-3">
                         <p>{props.totalHits} results ({props.processingTime / 1000} seconds)</p>
                     </div>)
                 }

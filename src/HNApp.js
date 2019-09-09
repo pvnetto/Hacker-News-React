@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
-import NewsContainer from './NewsContainer';
+import ResultsContainer from './ResultsContainer';
 import Footer from './Footer';
 
 import './scss/main.scss';
 
 import { fetchStories, searchTypes, searchTags, searchIntervals } from './AlgoliaFetch';
+import LoadingSpinner from './LoadingSpinner';
 
 function HNApp() {
   let [currentPage, setCurrentPage] = useState(0);
@@ -16,7 +17,7 @@ function HNApp() {
   let [isLoading, setIsLoading] = useState(false);
 
   let [searchType, setSearchType] = useState(searchTypes.POPULARITY);
-  let [searchTag, setSearchTag] = useState(searchTags.STORIES);
+  let [searchTag, setSearchTag] = useState(searchTags.ALL);
   let [searchInterval, setSearchInterval] = useState()
 
   useEffect(() => {
@@ -54,8 +55,8 @@ function HNApp() {
       />
       {
         isLoading ?
-          null :
-          <NewsContainer results={searchResults} maxPages={searchStats.maxPages} currentPage={currentPage} onClickPage={setCurrentPage} />
+          <LoadingSpinner /> :
+          <ResultsContainer results={searchResults} maxPages={searchStats.maxPages} currentPage={currentPage} onClickPage={setCurrentPage} />
       }
       <Footer />
     </div>
