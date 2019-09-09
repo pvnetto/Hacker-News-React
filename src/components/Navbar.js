@@ -2,7 +2,7 @@ import React from 'react';
 
 import { faHireAHelper } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAuth0 } from "./react-auth0-wrapper";
+import { useAuth0 } from "../react-auth0-wrapper";
 import LoginBtn from './LoginBtn';
 import UserProfile from './UserProfile';
 

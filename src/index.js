@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import HNApp from './HNApp';
+import HNApp from './components/HNApp';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<HNApp />, document.getElementById('root'));

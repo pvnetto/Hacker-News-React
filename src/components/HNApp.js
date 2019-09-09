@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Auth0Provider } from "./react-auth0-wrapper";
+import { Auth0Provider } from "../react-auth0-wrapper";
 
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
 import ResultsContainer from './ResultsContainer';
 import Footer from './Footer';
 import LoadingSpinner from './LoadingSpinner';
-import { fetchStories, searchTypes, searchTags, searchIntervals } from './AlgoliaFetch';
+import { fetchStories, searchTypes, searchTags, searchIntervals } from '../AlgoliaFetch';
 
-import './scss/main.scss';
+import '../scss/main.scss';
 
 
 function HNApp() {
