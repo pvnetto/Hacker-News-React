@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 import './scss/main.scss';
 
-import { fetchStories } from './AlgoliaFetch';
+import { fetchStories, searchTypes, searchTags, searchIntervals } from './AlgoliaFetch';
 
 function HNApp() {
   let [currentPage, setCurrentPage] = useState(0);
@@ -15,30 +15,43 @@ function HNApp() {
   let [searchStats, setSearchStats] = useState({ totalHits: undefined, processingTime: undefined, maxPages: undefined });
   let [isLoading, setIsLoading] = useState(false);
 
+  let [searchType, setSearchType] = useState(searchTypes.POPULARITY);
+  let [searchTag, setSearchTag] = useState(searchTags.STORIES);
+  let [searchInterval, setSearchInterval] = useState()
+
   useEffect(() => {
-    console.log("Resetting page index");
     setCurrentPage(0);
-  }, [searchTerm]);
+  }, [searchTerm, searchType, searchTag, searchInterval]);
+
 
   useEffect(() => {
     setIsLoading(true);
 
-    fetchStories(searchTerm, currentPage).then(data => {
+    fetchStories(searchTerm, currentPage, searchType, searchTag, searchInterval).then(data => {
+
       setSearchResults(data.hits);
       setSearchStats({
         totalHits: data.nbHits,
         processingTime: data.processingTimeMS,
         maxPages: data.nbPages
       });
-
       setIsLoading(false);
     });
-  }, [searchTerm, currentPage]);
+  }, [searchTerm, currentPage, searchType, searchTag, searchInterval]);
+
 
   return (
     <div className="container">
       <Navbar onTypeSearch={setSearchTerm} />
-      <SearchBar {...searchStats} />
+      <SearchBar
+        {...searchStats}
+        searchTags={Object.values(searchTags)}
+        searchTypes={Object.values(searchTypes)}
+        searchIntervals={Object.values(searchIntervals)}
+        setTag={setSearchTag}
+        setType={setSearchType}
+        setInterval={setSearchInterval}
+      />
       {
         isLoading ?
           null :

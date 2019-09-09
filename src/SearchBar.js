@@ -12,11 +12,11 @@ const SearchBar = (props) => {
             <div className="col-12 d-flex flex-md-row flex-column justify-content-between align-items-center">
                 <div>
                     Search
-                    <SearchBarOption selectItems={['All', 'Stories', 'Comments']} onSelect={onSelectOption} />
+                    <SearchBarOption selectItems={props.searchTags} onSelect={props.setTag} />
                     by
-                    <SearchBarOption selectItems={['Popularity', 'Date']} onSelect={onSelectOption} />
+                    <SearchBarOption selectItems={props.searchTypes} onSelect={props.setType} />
                     for
-                    <SearchBarOption selectItems={['All time', 'Last 24h', 'Past Week', 'Past Month', 'Past Year', 'Custom Range']} onSelect={onSelectOption} />
+                    <SearchBarOption selectItems={props.searchIntervals} onSelect={props.setInterval} />
                 </div>
 
                 {
