@@ -20,6 +20,18 @@ a:hover {
 }
 
 // Resetting Bootstrap 4 styles
+.page-item {
+    &.active {
+        background-color: white;
+
+        .page-link {
+            background-color: white;
+            border-color: white;
+            color: $primary;
+        }
+    }
+}
+
 .page-link {
     background-color: rgba($color: white, $alpha: 0.0);
     color: white;

@@ -9,30 +9,41 @@ import './scss/main.scss';
 import { fetchStories } from './AlgoliaFetch';
 
 function HNApp() {
-
   let [currentPage, setCurrentPage] = useState(0);
   let [searchTerm, setSearchTerm] = useState("");
   let [searchResults, setSearchResults] = useState([]);
-  let [searchPerformanceData, setSearchPerformanceData] = useState({ totalHits: undefined, processingTime: undefined });
+  let [searchStats, setSearchStats] = useState({ totalHits: undefined, processingTime: undefined, maxPages: undefined });
+  let [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log("Component did mount");
+    console.log("Resetting page index");
+    setCurrentPage(0);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setIsLoading(true);
 
     fetchStories(searchTerm, currentPage).then(data => {
-      console.log(data);
       setSearchResults(data.hits);
-      setSearchPerformanceData({
+      setSearchStats({
         totalHits: data.nbHits,
-        processingTime: data.processingTimeMS
+        processingTime: data.processingTimeMS,
+        maxPages: data.nbPages
       });
+
+      setIsLoading(false);
     });
   }, [searchTerm, currentPage]);
 
   return (
     <div className="container">
       <Navbar onTypeSearch={setSearchTerm} />
-      <SearchBar {...searchPerformanceData} />
-      <NewsContainer results={searchResults} onChangePage={setCurrentPage} />
+      <SearchBar {...searchStats} />
+      {
+        isLoading ?
+          null :
+          <NewsContainer results={searchResults} maxPages={searchStats.maxPages} currentPage={currentPage} onClickPage={setCurrentPage} />
+      }
       <Footer />
     </div>
   );
