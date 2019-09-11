@@ -6,8 +6,8 @@ const UserProfile = () => {
     const { loading, user } = useAuth0();
 
     return (
-        <li className="nav-item">
-            <p>{loading || !user ? "Loading..." : "Hello, " + user.name + "!"}</p>
+        <li className="nav-item d-flex flex-row align-items-center">
+            <p className="d-inline">{loading || !user ? "Loading..." : "Hello, " + user.name + "!"}</p>
         </li>
     );
 };
