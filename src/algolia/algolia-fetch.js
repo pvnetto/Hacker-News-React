@@ -101,7 +101,4 @@ const fetchStories = (query, page, searchType, tag, interval) => {
         .then(response => response.json());
 }
 
-exports.searchTypes = searchTypes;
-exports.searchTags = searchTags;
-exports.searchIntervals = searchIntervals;
-exports.fetchStories = fetchStories;
+module.exports = { searchTypes, searchTags, searchIntervals, fetchStories };

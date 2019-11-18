@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Auth0Provider } from "../react-auth0-wrapper";
+import { Auth0Provider } from "./auth0/auth0-wrapper";
 
-import Navbar from './Navbar';
-import SearchBar from './SearchBar';
-import ResultsContainer from './ResultsContainer';
-import Footer from './Footer';
-import LoadingSpinner from './LoadingSpinner';
-import { fetchStories, searchTypes, searchTags, searchIntervals } from '../AlgoliaFetch';
+import Navbar from './nav/Navbar';
+import SearchBar from './nav/SearchBar';
+import ResultsContainer from './news/ResultsContainer';
+import Footer from './footer';
+import LoadingSpinner from './loading/LoadingSpinner';
+import { fetchStories, searchTypes, searchTags, searchIntervals } from '../algolia';
 
 import '../scss/main.scss';
 
