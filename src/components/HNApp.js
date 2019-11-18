@@ -8,7 +8,7 @@ import Footer from './footer';
 import LoadingSpinner from './loading/LoadingSpinner';
 import { fetchStories, searchTypes, searchTags, searchIntervals } from '../algolia';
 
-import '../scss/main.scss';
+import '../assets/scss/main.scss';
 
 
 function HNApp() {
