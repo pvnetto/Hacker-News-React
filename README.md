@@ -6,6 +6,8 @@ and user authentication by [Auth0](https://auth0.com/).
 
 The main goal of this project was to practice using React by building an application that fetches data from an external API and does user authentication.
 
+[Live Version](https://hacker-news-search.herokuapp.com/)
+
 ## Core Features
 
 - Live Search (as the user types)
